@@ -1,7 +1,8 @@
 require 'bundler/setup'
 require 'rack/tracer'
 require 'rack/mock'
-require 'logasm/tracer'
+require 'test/tracer'
+require 'tracing/matchers'
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
@@ -9,17 +10,5 @@ RSpec.configure do |config|
 
   config.expect_with :rspec do |c|
     c.syntax = :expect
-  end
-end
-
-class ArrayLogger
-  attr_accessor :calls
-
-  def initialize
-    @calls = []
-  end
-
-  def info(*args)
-    @calls << args
   end
 end
